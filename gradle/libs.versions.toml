@@ -14,6 +14,7 @@ voyager = "1.0.0-rc05"
 ktor = "2.3.1"
 activity-ktx = "1.7.2"
 
+
 koin = "3.4.3"
 koin-compose = "1.0.4"
 

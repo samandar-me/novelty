@@ -27,9 +27,6 @@ fun App(
     NoveltyTheme(
         isDark = isDark
     ) {
-
-        //getScreenSize().screenType == ScreenSizeType.SMALL
-
         BoxWithConstraints {
             TabNavigator(HomeTab) {
                 if (maxWidth.value < 500f) {

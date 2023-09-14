@@ -1,0 +1,36 @@
+CREATE TABLE noveltyEntity(
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    author TEXT NOT NULL,
+    content TEXT NOT NULL,
+    desc TEXT NOT NULL,
+    date TEXT NOT NULL,
+    sourceName TEXT NOT NULL,
+    sourceId TEXT NOT NULL,
+    title TEXT NOT NULL,
+    url TEXT NOT NULL,
+    imageBytes BLOB NOT NULL
+);
+
+getNews:
+SELECT * FROM
+noveltyEntity ORDER BY id DESC;
+
+saveNews:
+INSERT OR REPLACE INTO noveltyEntity(
+    id,
+    author,
+    content,
+    desc,
+    date,
+    sourceName,
+    sourceId,
+    title,
+    url,
+    imageBytes
+) VALUES (?,?,?,?,?,?,?,?,?,?);
+
+deleteNews:
+DELETE FROM noveltyEntity WHERE id = :id;
+
+getNewsById:
+SELECT * FROM noveltyEntity WHERE sourceName = :name;

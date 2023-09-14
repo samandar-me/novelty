@@ -37,12 +37,12 @@ kotlin {
         }
     }
 
-    jvm("desktop") {
-        jvmToolchain(17)
-    }
-    js(IR) {
-        browser()
-    }
+//    jvm("desktop") {
+//        jvmToolchain(17)
+//    }
+//    js(IR) {
+//        browser()
+//    }
     iosX64()
     iosArm64()
     iosSimulatorArm64()
@@ -75,7 +75,7 @@ kotlin {
                 implementation(libs.ktor.serialization.kotlinx.json)
 
 
-                implementation(libs.runtime)
+                 implementation(libs.runtime)
                 implementation(libs.coroutines.extensions)
                 implementation(libs.kotlinx.datetime)
 
@@ -93,19 +93,21 @@ kotlin {
                 implementation(libs.koin.android)
             }
         }
-
-        val desktopMain by getting {
-            dependencies {
-                implementation(compose.desktop.common)
-                implementation(libs.ktor.client.cio)
-            }
-        }
-
-        val jsMain by getting {
-            dependencies {
-                implementation(libs.ktor.client.js)
-            }
-        }
+//
+//        val desktopMain by getting {
+//            dependencies {
+//                implementation(compose.desktop.common)
+//                implementation(libs.ktor.client.cio)
+//                //implementation(libs.native.driver)
+//            }
+//        }
+//
+//        val jsMain by getting {
+//            dependencies {
+//                implementation(libs.ktor.client.js)
+//                //implementation(libs.native.driver)
+//            }
+//        }
 
         val iosX64Main by getting
         val iosArm64Main by getting
@@ -122,6 +124,21 @@ kotlin {
         }
     }
 }
+
+sqldelight {
+    database("NoveltyDatabase") {
+        packageName = "com.sdk.novelty.database"
+        sourceFolders = listOf("sqldelight")
+    }
+}
+
+//sqldelight {
+//    databases {
+//        create("NoveltyDatabase") {
+//            packageName.set("com.sdk.novelty.database")
+//        }
+//    }
+//}
 
 android {
     namespace = "com.sdk.novelty"

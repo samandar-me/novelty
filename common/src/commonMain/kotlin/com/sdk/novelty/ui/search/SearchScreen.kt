@@ -66,7 +66,10 @@ internal object SearchScreen : Screen {
                     Loading()
                 }
                 ContentList(
-                    list = state.success
+                    list = state.success,
+                    onClick = {
+
+                    }
                 )
             }
         }

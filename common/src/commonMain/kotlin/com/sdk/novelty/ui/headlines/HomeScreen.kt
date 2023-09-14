@@ -93,7 +93,10 @@ internal object HomeScreen : Screen {
                     Loading()
                 }
                 ContentList(
-                    list = state.success
+                    list = state.success,
+                    onClick = { news ->
+                        nav.push(DetailScreen(news))
+                    }
                 )
             }
         }

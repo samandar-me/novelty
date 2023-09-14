@@ -16,15 +16,16 @@ import com.sdk.novelty.domain.model.News
 @Composable
 fun ContentList(
     modifier: Modifier = Modifier,
-    list: List<News>
+    list: List<News>,
+    onClick: (News) -> Unit
 ) {
     LazyColumn {
         items(
             items = list
-        ) {currentNews ->
+        ) { currentNews ->
             ListItem(
                 modifier = modifier.clickable {
-
+                    onClick(currentNews)
                 },
                 leadingContent = {
                     NetworkImage(
@@ -45,7 +46,8 @@ fun ContentList(
                         text = currentNews.description ?: "Description",
                         maxLines = 3,
                         overflow = TextOverflow.Ellipsis,
-                        fontSize = 14.sp)
+                        fontSize = 14.sp
+                    )
                 }
             )
         }

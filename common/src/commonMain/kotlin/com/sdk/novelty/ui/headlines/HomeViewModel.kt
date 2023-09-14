@@ -1,6 +1,5 @@
 package com.sdk.novelty.ui.headlines
-
-import com.sdk.novelty.domain.use_case.GetNewsUseCase
+import com.sdk.novelty.domain.use_case.AllUseCases
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -11,7 +10,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val getNewsUseCase: GetNewsUseCase
+    private val allUseCases: AllUseCases
 ) : ViewModel() {
     private val _state = MutableStateFlow(HomeState())
     val state get() = _state.asStateFlow()
@@ -21,15 +20,14 @@ class HomeViewModel(
     }
 
     fun loadNews(index: Int) {
-
-        val query = when(index) {
+        val query = when (index) {
             0 -> "general"
             1 -> "business"
             else -> "technology"
         }
 
         viewModelScope.launch {
-            getNewsUseCase(query)
+            allUseCases.getNewsUseCase(query)
                 .onStart {
                     _state.update {
                         it.copy(isLoading = true)

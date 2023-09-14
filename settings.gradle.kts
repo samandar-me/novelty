@@ -18,5 +18,5 @@ dependencyResolutionManagement {
 rootProject.name = "Novelty"
 include(":androidApp")
 include(":common")
-include(":desktop")
-include(":web")
+//include(":desktop")
+//include(":web")
