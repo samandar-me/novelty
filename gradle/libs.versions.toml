@@ -2,6 +2,7 @@
 agp = "8.2.0-beta03"
 appcompat = "1.6.1"
 core = "1.10.1"
+datastore-preferences = "1.0.0"
 gradle-plugin = "1.5.5"
 kamel-image = "0.6.0"
 kotlin = "1.8.20"
@@ -10,8 +11,8 @@ activity-compose = "1.7.2"
 kotlinx-coroutines-core = "1.6.4"
 kotlinx-datetime = "0.4.0"
 mvvm-core = "0.16.1"
-voyager = "1.0.0-rc05"
-ktor = "2.3.1"
+voyager = "1.0.0-rc06"
+ktor = "2.3.4"
 activity-ktx = "1.7.2"
 
 
@@ -24,6 +25,7 @@ android-driver = { module = "com.squareup.sqldelight:android-driver", version.re
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 core = { module = "androidx.core:core", version.ref = "core" }
 coroutines-extensions = { module = "com.squareup.sqldelight:coroutines-extensions", version.ref = "gradle-plugin" }
+datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore-preferences" }
 gradle-plugin = { module = "com.squareup.sqldelight:gradle-plugin", version.ref = "gradle-plugin" }
 kamel-image = { module = "media.kamel:kamel-image", version.ref = "kamel-image" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines-core" }

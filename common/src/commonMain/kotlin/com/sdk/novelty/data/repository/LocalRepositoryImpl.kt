@@ -7,6 +7,7 @@ import com.sdk.novelty.domain.repository.LocalRepository
 import com.squareup.sqldelight.runtime.coroutines.asFlow
 import com.squareup.sqldelight.runtime.coroutines.mapToList
 import com.squareup.sqldelight.runtime.coroutines.mapToOne
+import com.squareup.sqldelight.runtime.coroutines.mapToOneOrNull
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import org.koin.core.component.KoinComponent
@@ -48,12 +49,11 @@ class LocalRepositoryImpl : KoinComponent, LocalRepository {
         queries.deleteNews(id)
     }
 
-    override suspend fun getById(sourceName: String
-    ): Flow<NewsEntity?> {
+    override suspend fun getById(title: String): Flow<NewsEntity?> {
         return queries
-            .getNewsById(sourceName)
+            .getNewsById(title)
             .asFlow()
-            .mapToOne()
-            .map { it.toNewsEntity() }
+            .mapToOneOrNull()
+            .map { it?.toNewsEntity() }
     }
 }

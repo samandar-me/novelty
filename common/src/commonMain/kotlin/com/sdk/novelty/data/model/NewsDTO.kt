@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 data class NewsDTO(
     val articles: List<Article> = emptyList(),
     val status: String,
-    val totalResults: Int
+    val totalResults: Int = 0
 )

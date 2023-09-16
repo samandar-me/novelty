@@ -35,6 +35,7 @@ kotlin {
             baseName = "Common"
             isStatic = true
         }
+        //extraSpecAttributes["resources"] = "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
     }
 
 //    jvm("desktop") {
@@ -91,6 +92,7 @@ kotlin {
                 implementation(libs.ktor.client.cio)
 
                 implementation(libs.koin.android)
+                implementation(libs.datastore.preferences)
             }
         }
 //
@@ -132,17 +134,12 @@ sqldelight {
     }
 }
 
-//sqldelight {
-//    databases {
-//        create("NoveltyDatabase") {
-//            packageName.set("com.sdk.novelty.database")
-//        }
-//    }
-//}
 
 android {
     namespace = "com.sdk.novelty"
     compileSdk = 33
+
+    sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
     defaultConfig {
         minSdk = 24

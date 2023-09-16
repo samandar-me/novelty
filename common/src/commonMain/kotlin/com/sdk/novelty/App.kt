@@ -17,15 +17,23 @@ import com.sdk.novelty.ui.components.TabItem
 import com.sdk.novelty.ui.headlines.HomeTab
 import com.sdk.novelty.ui.saved.SavedTab
 import com.sdk.novelty.ui.settings.Settings
+import com.sdk.novelty.ui.settings.SettingsViewModel
 import com.sdk.novelty.util.Other
+import org.koin.compose.rememberKoinInject
 
 
 @Composable
 fun App(
     isDark: Boolean
 ) {
+    val vm = rememberKoinInject<SettingsViewModel>()
+    val theme = when(vm.index) {
+        0 -> isDark
+        1 -> false
+        else -> true
+    }
     NoveltyTheme(
-        isDark = isDark
+        isDark = theme
     ) {
         BoxWithConstraints {
             TabNavigator(HomeTab) {
@@ -38,7 +46,7 @@ fun App(
                                 NavigationBar {
                                     TabItem(HomeTab)
                                     TabItem(SavedTab)
-                                    TabItem(Settings)
+                                    TabItem(Settings(vm))
                                 }
                             }
                         }
@@ -55,7 +63,7 @@ fun App(
                         NavigationRail {
                             RailItem(HomeTab)
                             RailItem(SavedTab)
-                            RailItem(Settings)
+                            //RailItem(Settings)
                         }
                     }
                 }

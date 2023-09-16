@@ -16,7 +16,7 @@ SELECT * FROM
 noveltyEntity ORDER BY id DESC;
 
 saveNews:
-INSERT OR REPLACE INTO noveltyEntity(
+INSERT INTO noveltyEntity(
     id,
     author,
     content,
@@ -33,4 +33,4 @@ deleteNews:
 DELETE FROM noveltyEntity WHERE id = :id;
 
 getNewsById:
-SELECT * FROM noveltyEntity WHERE sourceName = :name;
+SELECT * FROM noveltyEntity WHERE title = :name;

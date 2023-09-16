@@ -8,5 +8,5 @@ interface LocalRepository {
     fun getAllNews(): Flow<List<NewsEntity>>
 
     suspend fun deleteById(id: Long)
-    suspend fun getById(sourceName: String): Flow<NewsEntity?>
+    suspend fun getById(title: String): Flow<NewsEntity?>
 }

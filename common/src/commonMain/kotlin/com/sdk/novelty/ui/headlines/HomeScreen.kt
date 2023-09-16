@@ -17,6 +17,7 @@ import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -41,11 +42,13 @@ import com.sdk.novelty.ui.search.SearchScreen
 import org.koin.compose.koinInject
 import org.koin.compose.rememberKoinInject
 
-internal object HomeScreen : Screen {
+internal class HomeScreen(
+    private val state: State<HomeState>,
+    private val loadNews: (Int) -> Unit
+) : Screen {
+
     @Composable
     override fun Content() {
-        val vm = rememberKoinInject<HomeViewModel>()
-        val state by vm.state.collectAsState()
         var selectedTabIndex by remember { mutableStateOf(0) }
         val tabs = listOf(TopBarItem.General,TopBarItem.Business,TopBarItem.Traveling)
         val nav = LocalNavigator.currentOrThrow
@@ -70,7 +73,7 @@ internal object HomeScreen : Screen {
                             selected = selectedTabIndex == index,
                             onClick = {
                                 selectedTabIndex = index
-                                vm.loadNews(selectedTabIndex)
+                                loadNews(selectedTabIndex)
                             },
                             icon = {
                                 Icon(
@@ -84,20 +87,22 @@ internal object HomeScreen : Screen {
                         )
                     }
                 }
-                if(state.error.isNotBlank()) {
+                if(state.value.error.isNotBlank()) {
                     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                        Text(text = state.error, fontSize = 25.sp)
+                        Text(text = state.value.error, fontSize = 25.sp)
                     }
                 }
-                if(state.isLoading) {
+                if(state.value.isLoading) {
                     Loading()
                 }
-                ContentList(
-                    list = state.success,
-                    onClick = { news ->
-                        nav.push(DetailScreen(news))
-                    }
-                )
+                if(state.value.isLoaded) {
+                    ContentList(
+                        list = state.value.success[selectedTabIndex],
+                        onClick = { news ->
+                            nav.push(DetailScreen(news))
+                        }
+                    )
+                }
             }
         }
     }

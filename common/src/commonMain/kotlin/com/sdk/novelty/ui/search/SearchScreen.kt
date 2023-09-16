@@ -23,6 +23,7 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import com.sdk.novelty.ui.components.ContentList
 import com.sdk.novelty.ui.components.Loading
 import com.sdk.novelty.ui.components.SearchBar
+import com.sdk.novelty.ui.detail.DetailScreen
 import com.sdk.novelty.util.Other
 import org.koin.compose.rememberKoinInject
 
@@ -34,9 +35,7 @@ internal object SearchScreen : Screen {
         val state by vm.state.collectAsState()
         val nav = LocalNavigator.currentOrThrow
         val keyboardController = LocalSoftwareKeyboardController.current
-        val focusRequester = remember { FocusRequester() }
         LaunchedEffect(Unit) {
-            focusRequester.requestFocus()
             keyboardController?.show()
             Other.isBottomBarVisible = false
         }
@@ -46,11 +45,9 @@ internal object SearchScreen : Screen {
                     onSearch = vm::search,
                     onBack = {
                         keyboardController?.hide()
-                        focusRequester.freeFocus()
                         nav.pop()
                         Other.isBottomBarVisible = true
-                    },
-                    focusRequester = focusRequester
+                    }
                 )
             }
         ) {
@@ -67,8 +64,9 @@ internal object SearchScreen : Screen {
                 }
                 ContentList(
                     list = state.success,
-                    onClick = {
-
+                    onClick = { news ->
+                        nav.popUntilRoot()
+                        nav.push(DetailScreen(news))
                     }
                 )
             }

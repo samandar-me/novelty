@@ -1,7 +1,7 @@
 package com.sdk.novelty.domain.model
 
 data class NewsEntity(
-    val id: Long = 0,
+    val id: Long?,
     val author: String,
     val content: String,
     val description: String,

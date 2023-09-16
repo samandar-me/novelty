@@ -17,7 +17,9 @@ import com.sdk.novelty.domain.use_case.GetNewsUseCase
 import com.sdk.novelty.domain.use_case.SaveNewsUseCase
 import com.sdk.novelty.ui.detail.DetailViewModel
 import com.sdk.novelty.ui.headlines.HomeViewModel
+import com.sdk.novelty.ui.saved.SavedViewModel
 import com.sdk.novelty.ui.search.SearchViewModel
+import com.sdk.novelty.ui.settings.SettingsViewModel
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.DEFAULT
@@ -39,10 +41,6 @@ val appModule = module {
                     ignoreUnknownKeys = true
                     useAlternativeNames = false
                 })
-            }
-            install(Logging) {
-                logger = Logger.DEFAULT
-                level = LogLevel.BODY
             }
         }
     }
@@ -70,5 +68,7 @@ val appModule = module {
     ) }
     factory { HomeViewModel(get()) }
     factory { SearchViewModel(get()) }
-    factory { DetailViewModel(get(), get()) }
+    factory { DetailViewModel(get(), get(), get()) }
+    factory { SavedViewModel(get()) }
+    factory { SettingsViewModel(get()) }
 }

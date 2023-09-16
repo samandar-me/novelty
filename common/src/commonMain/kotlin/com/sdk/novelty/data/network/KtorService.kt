@@ -4,4 +4,5 @@ import com.sdk.novelty.data.model.NewsDTO
 
 interface KtorService {
     suspend fun getNews(query: String): NewsDTO
+    fun close()
 }
