@@ -18,6 +18,7 @@ import com.sdk.novelty.ui.headlines.HomeTab
 import com.sdk.novelty.ui.saved.SavedTab
 import com.sdk.novelty.ui.settings.Settings
 import com.sdk.novelty.ui.settings.SettingsViewModel
+import com.sdk.novelty.ui.theme.seed
 import com.sdk.novelty.util.Other
 import org.koin.compose.rememberKoinInject
 

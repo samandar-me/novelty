@@ -37,7 +37,7 @@ kotlin {
         }
         //extraSpecAttributes["resources"] = "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
     }
-
+//
 //    jvm("desktop") {
 //        jvmToolchain(17)
 //    }
@@ -76,7 +76,7 @@ kotlin {
                 implementation(libs.ktor.serialization.kotlinx.json)
 
 
-                 implementation(libs.runtime)
+                implementation(libs.runtime)
                 implementation(libs.coroutines.extensions)
                 implementation(libs.kotlinx.datetime)
 
@@ -95,15 +95,16 @@ kotlin {
                 implementation(libs.datastore.preferences)
             }
         }
-//
+
 //        val desktopMain by getting {
 //            dependencies {
 //                implementation(compose.desktop.common)
 //                implementation(libs.ktor.client.cio)
 //                //implementation(libs.native.driver)
+//                implementation("app.cash.sqldelight:sqlite-driver:2.0.0")
 //            }
 //        }
-//
+
 //        val jsMain by getting {
 //            dependencies {
 //                implementation(libs.ktor.client.js)

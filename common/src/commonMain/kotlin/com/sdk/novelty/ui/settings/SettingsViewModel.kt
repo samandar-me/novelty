@@ -14,16 +14,21 @@ class SettingsViewModel(
         private set
 
     init {
+        observerValue()
+    }
+
+    private fun observerValue() {
         viewModelScope.launch {
             cachingManager.getThemeIndex().collectLatest {
-                println("@@@changed$it")
                 index = it
             }
         }
     }
+
     fun saveThemeIndex(index: Int) {
         viewModelScope.launch(appDispatcher) {
             cachingManager.saveThemeIndex(index)
+            observerValue()
         }
     }
 }
