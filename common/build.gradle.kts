@@ -35,15 +35,7 @@ kotlin {
             baseName = "Common"
             isStatic = true
         }
-        //extraSpecAttributes["resources"] = "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
     }
-//
-//    jvm("desktop") {
-//        jvmToolchain(17)
-//    }
-//    js(IR) {
-//        browser()
-//    }
     iosX64()
     iosArm64()
     iosSimulatorArm64()
@@ -95,23 +87,6 @@ kotlin {
                 implementation(libs.datastore.preferences)
             }
         }
-
-//        val desktopMain by getting {
-//            dependencies {
-//                implementation(compose.desktop.common)
-//                implementation(libs.ktor.client.cio)
-//                //implementation(libs.native.driver)
-//                implementation("app.cash.sqldelight:sqlite-driver:2.0.0")
-//            }
-//        }
-
-//        val jsMain by getting {
-//            dependencies {
-//                implementation(libs.ktor.client.js)
-//                //implementation(libs.native.driver)
-//            }
-//        }
-
         val iosX64Main by getting
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
