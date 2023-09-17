@@ -115,8 +115,6 @@ android {
     namespace = "com.sdk.novelty"
     compileSdk = 33
 
-    sourceSets["main"].resources.srcDirs("src/commonMain/resources")
-
     defaultConfig {
         minSdk = 24
 
