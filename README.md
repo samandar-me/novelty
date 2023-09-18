@@ -1,6 +1,6 @@
 # Novelty
 
-<img width="899" alt="Screenshot 2023-09-18 at 10 48 46" src="https://github.com/samandar-me/novelty/assets/95674842/4cce03e5-2f2f-48b9-883c-8c7f116f5f67">
+![telegram-cloud-photo-size-2-5206269798009394105-y](https://github.com/samandar-me/novelty/assets/95674842/302c0401-9912-4d15-815e-14911d9d6089)
 
 
 
